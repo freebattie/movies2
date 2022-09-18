@@ -13,7 +13,7 @@ function FrontPage() {
     return <div>
         <ul>
             <li><Link to={"/movies"}>Movies</Link></li>
-            <li><Link to={"/add"}>add new movie</Link></li>
+            <li><Link to={"/movies/add"}>add new movie</Link></li>
         </ul>
     </div>
 }
@@ -23,19 +23,24 @@ function ShowAllMovies() {
 }
 
 function AddNewMovie() {
-    return <h1>adding movies</h1>;
+    return<h1>my movie 222</h1>;
 }
 
 function PageNotFound() {
     return <h1>NotFound</h1>;
 }
+function MovieApplication(){
 
+    return <Routes>
+            <Route path={"/"} element={<ShowAllMovies />}/>
+            <Route path={"/add"} element={<AddNewMovie />}/>
+          </Routes>
+}
 function Application() {
     return <BrowserRouter>
         <Routes>
             <Route path={"/"} element={<FrontPage/>}/>
-            <Route path={"/movies"} element={<ShowAllMovies/>}/>
-            <Route path={"/add"} element={<AddNewMovie/>}/>
+            <Route path={"/movies/*"} element={<MovieApplication/>}/>
             <Route path={"*"} element={<PageNotFound/>}/>
         </Routes>
     </BrowserRouter>;
