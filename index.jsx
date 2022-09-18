@@ -17,9 +17,29 @@ function FrontPage() {
         </ul>
     </div>
 }
+const MOVIES = [
+    {
+    title: "Jackass",
+    year: 2022,
+    plot:"something something more"
+    },
+    {
+        title: "Diehard 20",
+        year: 2042,
+        plot:"Explosions and more explosions"
+    },
+]
+
+function MovieCard({movie}) {
+    const {title} = movie
+    return <div Key={title}>{title}</div>;
+}
 
 function ShowAllMovies() {
-    return <h1>my movie </h1>;
+    return <div>
+        <h1>Movies</h1>
+        {MOVIES.map(movie => <MovieCard movie={movie}/>)}
+    </div>;
 }
 
 function AddNewMovie() {
@@ -37,13 +57,16 @@ function MovieApplication(){
           </Routes>
 }
 function Application() {
-    return <BrowserRouter>
+    return <>
+
+        <BrowserRouter>
         <Routes>
             <Route path={"/"} element={<FrontPage/>}/>
             <Route path={"/movies/*"} element={<MovieApplication/>}/>
             <Route path={"*"} element={<PageNotFound/>}/>
         </Routes>
-    </BrowserRouter>;
+    </BrowserRouter>
+</>
 }
 
 // and to render a App Component you do
