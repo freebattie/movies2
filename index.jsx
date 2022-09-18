@@ -31,8 +31,10 @@ const MOVIES = [
 ]
 
 function MovieCard({movie}) {
-    const {title} = movie
-    return <div Key={title}>{title}</div>;
+    const {title,year,plot} = movie
+    return <div Key={title}>
+        <h2>{title} - {year}</h2>
+        <p>{plot}</p></div>;
 }
 
 function ShowAllMovies() {
